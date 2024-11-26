@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'CalSans';
+  src: url('https://fonts.cdnfonts.com/s/97944/CalSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.cal-sans {
+  font-family: 'CalSans', sans-serif;
+}
+
+/* Remotion Player Styles */
+.remotion-player-controls {
+  @apply bg-gray-800 text-white;
+}
+
+.remotion-player-controls button {
+  @apply hover:bg-gray-700 transition-colors;
+}
+
+.remotion-time-slider {
+  @apply bg-gray-600;
+}
+
+.remotion-volume-slider {
+  @apply bg-gray-600;
+}
