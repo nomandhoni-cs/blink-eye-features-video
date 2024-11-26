@@ -14,10 +14,10 @@ interface BlinkEyeVideoProps {
 export const BlinkEyeVideo: React.FC<BlinkEyeVideoProps> = ({ features }) => {
   const frame = useCurrentFrame();
   
-  // Even faster pacing with shorter durations
-  const SLIDE_DURATION = 60; // Reduced from 90
-  const FINAL_SEQUENCE_DURATION = 45; // Reduced from 60
-  const LOGO_DURATION = 45; // Reduced from 60
+  // Adjusted durations
+  const SLIDE_DURATION = 150; // 5 seconds per slide for faster transition
+  const FINAL_SEQUENCE_DURATION = 150; // Final sequence duration (5 seconds)
+  const LOGO_DURATION = 150; // Final logo duration (5 seconds)
   
   const FINAL_SEQUENCE_START = features.length * SLIDE_DURATION;
   const LOGO_SEQUENCE_START = FINAL_SEQUENCE_START + FINAL_SEQUENCE_DURATION;
@@ -31,9 +31,10 @@ export const BlinkEyeVideo: React.FC<BlinkEyeVideoProps> = ({ features }) => {
   const showFinalSequence = frame >= FINAL_SEQUENCE_START && frame < LOGO_SEQUENCE_START;
   const showLogoSequence = frame >= LOGO_SEQUENCE_START;
 
+  // Faster and smoother transition calculation
   const transition = interpolate(
     slideProgress,
-    [0.6, 1], // Even faster transition
+    [0.4, 1], // Smoother transition with faster pacing
     [0, 1],
     {
       extrapolateLeft: 'clamp',
@@ -41,6 +42,7 @@ export const BlinkEyeVideo: React.FC<BlinkEyeVideoProps> = ({ features }) => {
     }
   );
 
+  // Opacity for final sequence fade-in
   const finalSequenceOpacity = interpolate(
     frame,
     [FINAL_SEQUENCE_START, FINAL_SEQUENCE_START + 10],
@@ -51,6 +53,7 @@ export const BlinkEyeVideo: React.FC<BlinkEyeVideoProps> = ({ features }) => {
     }
   );
 
+  // Opacity for logo fade-in
   const logoSequenceOpacity = interpolate(
     frame,
     [LOGO_SEQUENCE_START, LOGO_SEQUENCE_START + 10],

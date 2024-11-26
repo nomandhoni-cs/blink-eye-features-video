@@ -96,7 +96,7 @@ export const FeatureSlide: React.FC<FeatureSlideProps> = ({ feature, index }) =>
                 )}px)`,
               }}
             >
-              <CheckCircle size={24} fill="white" color="white" />
+              <CheckCircle size={24} color="white" />
               <span style={{ fontSize: '18px' }}>{feat}</span>
             </div>
           ))}
